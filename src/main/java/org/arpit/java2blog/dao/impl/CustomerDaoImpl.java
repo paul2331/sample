@@ -1,6 +1,8 @@
-package org.arpit.java2blog.dao;
+package org.arpit.java2blog.dao.impl;
 
 import java.util.List;
+
+import org.arpit.java2blog.dao.CustomerDao;
 import org.arpit.java2blog.model.Customer;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
