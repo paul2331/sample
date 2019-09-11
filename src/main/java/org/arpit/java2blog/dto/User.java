@@ -14,6 +14,6 @@ public class User implements Serializable{
 	String password;
 	String name;
 	String role;
-	String clientId;
-	Integer id;
+	String userType;
+	Integer staffId;
 }

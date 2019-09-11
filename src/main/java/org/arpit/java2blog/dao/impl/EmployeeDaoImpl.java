@@ -19,10 +19,11 @@ public class EmployeeDaoImpl implements EmployeeDao{
 	private SessionFactory sessionFactory;
 	
 	@Override
-	public Employee getEmployeeByEmailId(String emailId) {
+	public Employee getEmployeeByEmailId(String emailId, String password) {
 		System.out.println("emailId-->"+emailId);
 		Session session = this.sessionFactory.getCurrentSession();
-		List<Employee>  employeeList = session.createQuery("from Employee where mailId=:emailId").setString("emailId", emailId).list();
+		List<Employee>  employeeList = session.createQuery("from Employee where mailId=:emailId and password=:password")
+				.setString("emailId", emailId).setString("password", password).list();
 		System.out.println("employeeList-->"+employeeList);
 		if(employeeList!=null && !employeeList.isEmpty()) {
 			return employeeList.get(0);

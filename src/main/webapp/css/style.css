@@ -7673,10 +7673,10 @@ sub {
   display: block; }
 
 .header {
-  height: 5rem;
+  height: 4rem;
   z-index: 1;
   position: relative;
-  padding: 0 0.9375rem;
+  padding: 0 1.9375rem;
   background: #fff;
   margin-left: 15.1875rem;
   transition: all .2s ease; }
@@ -7722,7 +7722,7 @@ sub {
   top: 0; }
 
 [data-header-position="fixed"] .content-body {
-  padding-top: 5rem; }
+  padding-top: 4rem; }
 
 [data-header-position="fixed"] .nk-sidebar {
   margin-top: 0; }
@@ -7781,7 +7781,7 @@ sub {
   display: none;
   z-index: 9999;
   width: 20rem;
-  top: 0rem !important;
+  top: -1rem !important;
   position: absolute;
   right: 0 !important;
   left: auto !important;
@@ -7930,6 +7930,9 @@ sub {
     color: #7571f9; }
   .dropdown-profile ul {
     padding: 0rem 0; }
+    .dropdown-profile li:hover {
+      background:aqua;
+    }
   .dropdown-profile li {
     padding: 0.4375rem 1.25rem !important;
     margin-bottom: 0 !important; }
@@ -8038,10 +8041,10 @@ svg.pulse-svg {
       top: 2px; }
     .header-right .icons .user-img {
       position: relative;
-      top: -7px; }
+      top: -1px; }
       .header-right .icons .user-img img {
-        height: 70px;
-        width: 70px;
+        height: 60px;
+        width: 60px;
         border: 3px solid #4540f7;
         border-radius: 50%;
         margin: 0;
@@ -8141,7 +8144,7 @@ Fixing Order => Base + Typography >> General Layout + Grid >> Page Layout + Comp
   padding-bottom: 112px;
   height: 100%;
   position: absolute;
-  top: 5rem;
+  top: 4rem;
   padding-top: 0;
   z-index: 99;
   background: #fff;
@@ -8154,6 +8157,9 @@ Fixing Order => Base + Typography >> General Layout + Grid >> Page Layout + Comp
     margin: 0;
     list-style: none;
     background: #fafafa; }
+    .nk-sidebar ul li.hover{
+      background-color: #843cf6;
+    }
   .nk-sidebar .metismenu {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -8172,18 +8178,21 @@ Fixing Order => Base + Typography >> General Layout + Grid >> Page Layout + Comp
       -ms-flex-direction: column;
       flex-direction: column;
       position: relative;
-      color: #464a53; }
+      color: #cad3eb; }
       .nk-sidebar .metismenu > li > a {
         transition: none; }
       .nk-sidebar .metismenu > li:hover i, .nk-sidebar .metismenu > li:focus i, .nk-sidebar .metismenu > li.active i {
-        color: #464a53 !important; }
+        color: #0f0f0f !important; }
       .nk-sidebar .metismenu > li:hover span, .nk-sidebar .metismenu > li:focus span, .nk-sidebar .metismenu > li.active span {
-        color: #464a53; }
+        color: #74bee9; 
+      }
       .nk-sidebar .metismenu > li:hover > a {
-        background: #F3F1FA;
-        color: #7571f9; }
+        background: aqua;
+        color : red;
+        font-weight: bold;
+         }
       .nk-sidebar .metismenu > li.active > a {
-        background: #F3F1FA;
+        
         color: #464a53; }
       .nk-sidebar .metismenu > li.active ul a {
         color: #464a53; }
@@ -8205,12 +8214,17 @@ Fixing Order => Base + Typography >> General Layout + Grid >> Page Layout + Comp
     .nk-sidebar .metismenu ul ul a {
       padding: 0.625rem 0.9375rem 0.625rem 3.75rem; }
     .nk-sidebar .metismenu .mega-menu ul.in li a:hover, .nk-sidebar .metismenu .mega-menu ul.in li a:focus, .nk-sidebar .metismenu .mega-menu ul.in li a.active {
-      color: #7571f9; }
+      color: #7571f9; 
+    }
     .nk-sidebar .metismenu a {
       transition: all 0.4s ease-in-out; }
       .nk-sidebar .metismenu a:hover, .nk-sidebar .metismenu a:active, .nk-sidebar .metismenu a.active {
         text-decoration: none;
-        background-color: #F3F1FA; }
+         }
+
+        .nk-sidebar .metismenu a:hover{
+          background-color: aqua;
+        }
     .nk-sidebar .metismenu .has-arrow:after {
       position: absolute;
       content: "";
@@ -8448,7 +8462,7 @@ Fixing Order => Base + Typography >> General Layout + Grid >> Page Layout + Comp
     [data-sidebar-style="mini"] .nav-header .brand-logo {
       z-index: 999; }
       [data-sidebar-style="mini"] .nav-header .brand-logo a {
-        padding: 1.607rem 1.0625rem; }
+        padding: 1.057rem 0.9025rem; }
         [data-sidebar-style="mini"] .nav-header .brand-logo a b img {
           margin-top: 0.4375rem; }
     [data-sidebar-style="mini"] .nav-header .nav-control {
@@ -8918,7 +8932,7 @@ Fixing Order => Base + Typography >> General Layout + Grid >> Page Layout + Comp
   [data-layout="horizontal"] .sidebar-right {
     z-index: 1; }
   [data-header-position="fixed"][data-layout="horizontal"] .nk-sidebar {
-    top: 5rem; }
+    top: 4rem; }
   [data-header-position="fixed"][data-sidebar-position="fixed"] .nk-sidebar {
     position: fixed; }
   [data-header-position="fixed"][data-layout="horizontal"][data-sidebar-position="fixed"] .content-body {
@@ -9044,7 +9058,7 @@ Fixing Order => Base + Typography >> General Layout + Grid >> Page Layout + Comp
   width: 15.625rem;
   background-color: #fff;
   height: calc(100% - 7.0625rem);
-  margin-top: 5rem;
+  margin-top: 4rem;
   transition: all .5s ease-in-out;
   padding-bottom: 1.875rem; }
   [direction="rtl"] .sidebar-right .slimScrollDiv {
@@ -9984,7 +9998,7 @@ Input Style
   height: 50px; }
 
 .textarea_editor {
-  min-height: 300px; }
+  min-height: 100px; }
 
 .bootstrap-touchspin .input-group-btn,
 .bootstrap-touchspin .input-group-prepend,
@@ -11045,7 +11059,9 @@ table.dataTable thead .sorting::after {
   border-radius: 100px;
   display: inline-block;
   margin: -5px 13px -5px -15px;
-  padding: 5px 10px 6px; }
+  padding: 5px 10px 6px; 
+  border: 2px solid darkgray;
+  }
 
 .toggle-dropdown::after {
   margin-left: 0.755em; }
@@ -14123,8 +14139,8 @@ html[dir="rtl"] [direction="rtl"][data-sidebar-style="compact"]:not([data-layout
   background-color: #fff; }
   [data-sibebarbg="color_1"] .nk-sidebar .metismenu > li {
     color: #27394F; }
-    [data-sibebarbg="color_1"] .nk-sidebar .metismenu > li ul a {
-      color: #76838f; }
+    [data-sibebarbg="color_1"] .nk-sidebar .metismenu > li ul a.hover {
+      color: #8f7676; }
 
 [data-sibebarbg="color_2"] .nk-sidebar {
   background-color: #27394F !important; }

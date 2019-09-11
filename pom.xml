@@ -30,7 +30,11 @@
 			<groupId>javax.servlet</groupId>
 			<artifactId>jstl</artifactId>
 		</dependency>
-
+ 		<dependency>
+            <groupId>com.sun.mail</groupId>
+            <artifactId>javax.mail</artifactId>
+            <version>1.6.0</version>
+        </dependency>
 		<!-- For JSP compilation -->
 			
 	    <dependency>
@@ -38,7 +42,11 @@
 	        <artifactId>lombok</artifactId>
 	        <version>1.18.4</version>	       
 	    </dependency>
-
+		 <dependency>
+		    <groupId>com.jcabi</groupId>
+		    <artifactId>jcabi-aspects</artifactId>
+		    <version>0.22.6</version>
+		  </dependency>
 		<dependency>
 			<groupId>org.apache.tomcat.embed</groupId>
 			<artifactId>tomcat-embed-jasper</artifactId>

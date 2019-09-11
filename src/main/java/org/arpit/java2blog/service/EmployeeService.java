@@ -15,8 +15,8 @@ public class EmployeeService {
 	EmployeeDao employeeDao;
 	
 	@Transactional
-	public Employee getEmployeeByEmailId(String email) {
-		return employeeDao.getEmployeeByEmailId(email);
+	public Employee getEmployeeByEmailId(String email, String password) {
+		return employeeDao.getEmployeeByEmailId(email, password);
 	}
 	
 }

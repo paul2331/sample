@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Quixlab - Bootstrap Admin Dashboard Template by Themefisher.com</title>
+    <!-- Favicon icon -->
+    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon.png">
+    <!-- Custom Stylesheet -->
+      <!-- Custom Stylesheet -->
+    <link href="/plugins/tables/css/datatable/dataTables.bootstrap4.min.css" rel="stylesheet">
+    <link href="/css/style.css" rel="stylesheet">
+    <link href="/css/loading.css" rel="stylesheet"> 
+    <link rel="stylesheet" type="text/css" href="/css/pagination/pagination.css"  />
+    <!--**********************************
+        Scripts
+    ***********************************-->
+    <script src="/js/customer/pagination.js"></script>
+    <script src="/plugins/common/common.min.js"></script>
+    <script src="/js/custom.min.js"></script>
+    <script src="/js/settings.js"></script>
+    <script src="/js/gleek.js"></script>
+    <script src="/js/styleSwitcher.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript" src="//unpkg.com/xlsx/dist/xlsx.full.min.js"></script>
+    <script src="./plugins/tables/js/jquery.dataTables.min.js"></script>
+    <script src="./plugins/tables/js/datatable/dataTables.bootstrap4.min.js"></script>
+    <script src="./plugins/tables/js/datatable-init/datatable-basic.min.js"></script> 
+    <script src="/js/main.js"></script>
+<script type="text/javascript">
+	var tableData = {};
+	$("#ckbCheckAll").click(function () {
+        $(".checkBoxClass").attr('checked', this.checked);
+    });
+	function sendSMSContent(){
+		alert("Yet To Implement.");	  
+    	$( "#closeBtnSMS" ).click();
+	}
+	function sendMailContent(){		
+	    var req = {};
+	    req["subject"] = $('#mailSub').val();
+	    req["recipients"] = $('#toAddress').val();
+	    req["message"] = $('#mailContent').val();	    
+
+	    req = JSON.stringify(req);  	   
+
+	    $.ajax({
+	        type : 'POST',
+	        url : cabaseurl+'/sendMail',
+		    contentType:"application/json; charset=utf-8",
+	        data : req,
+	        success : function(){
+	        	alert("Mail Sent Successfully.");	  
+	        	$( "#closeBtn" ).click();
+	        },
+	        error : function()
+	        {
+	            alert("Error in sending Mail. Please try again. . .");
+	            $( "#closeBtn" ).click();
+	        }
+
+	    });
+	}
+	function setMailIds(){
+		var ids = $("input[name='consultantIds']:checked").map(function () {
+		    return this.value;
+		}).get();	
+		var emails="";
+		$.each(tableData.list, function(i,dish){ 				
+			$.each(ids, function(i,id){ 
+				if(id==dish.id){
+					emails = emails+dish.emailId+";";
+				}				
+			});
+	       		 			             
+	    });
+		
+		$("#toAddress").val(emails); 
+		return true;
+	}
+	function setMobileNos(){
+		var ids = $("input[name='consultantIds']:checked").map(function () {
+		    return this.value;
+		}).get();	
+		var nos="";
+		$.each(tableData.list, function(i,dish){ 				
+			$.each(ids, function(i,id){ 
+				if(id==dish.id){
+					nos = nos+dish.phoneNo+";";
+				}				
+			});
+	       		 			             
+	    });
+		
+		$("#toNos").val(nos); 
+		return true;
+	}
+	function deleteConsulants(){
+		var ids = $("input[name='consultantIds']:checked").map(function () {
+		    return this.value;
+		}).get();			
+		
+		jQuery.ajax({
+	        type : 'GET',
+	        url:  cabaseurl+'/deleteConsultants/'+ids,
+	        contentType:"application/json; charset=utf-8",	        
+	        success : function(response)
+	        {	        	
+	        	alert("Successfully updated.");
+	        	getRecords("-1","10");
+			},
+	        error : function(e)
+	        {	     
+	        	console.log(e);
+	            alert('Error. . .');
+	        }
+	    });
+	}
+	function changeStatus(action){	
+		var ids = $("input[name='consultantIds']:checked").map(function () {
+		    return this.value;
+		}).get();			
+		
+		jQuery.ajax({
+	        type : 'GET',
+	        url:  cabaseurl+'/updateByIdAndStatus/'+ids+'/'+action,
+	        contentType:"application/json; charset=utf-8",	        
+	        success : function(response)
+	        {	        	
+	        	alert("Successfully updated.");
+	        	getRecords("-1","10");
+			},
+	        error : function(e)
+	        {	     
+	        	console.log(e);
+	            alert('Error. . .');
+	        }
+	    });
+	}
+	function enableActionButtons(){
+		var favorite = [];
+        $.each($("input[name='consultantIds']:checked"), function(){            
+            favorite.push($(this).val());
+        });
+        if(favorite.length>0){        	
+        	$("#actionButtons").show();
+        }else{        	
+        	$("#actionButtons").hide();
+        }
+	}
+	function download(){
+		jQuery.ajax({
+		    cache: false,
+		    url:  cabaseurl+'/listAllConsultants',
+		    type: "GET",
+		    success: function(json) {
+		    	var createXLSLFormatObj = [];
+		    	 
+		        /* XLS Head Columns */
+		        var xlsHeader = ["ID", "Name", "Company Name", "Address", "Email ID", "Password", "Phone No1", "Phone No2", "Status" ];
+		 
+		        /* XLS Rows Data */
+		        var xlsRows =  json;       			  					  				
+		        createXLSLFormatObj.push(xlsHeader);
+		        $.each(xlsRows, function(index, value) {
+		            var innerRowData = [];		            
+		            $.each(value, function(ind, val) {
+		                innerRowData.push(val);
+		            });
+		            createXLSLFormatObj.push(innerRowData);
+		        });
+
+
+		        /* File Name */
+		        var filename = "Consultants-list.xlsx";
+
+		        /* Sheet Name */
+		        var ws_name = "Consultants";
+
+		        if (typeof console !== 'undefined') console.log(new Date());
+		        var wb = XLSX.utils.book_new(),
+		            ws = XLSX.utils.aoa_to_sheet(createXLSLFormatObj);
+
+		        /* Add worksheet to workbook */
+		        XLSX.utils.book_append_sheet(wb, ws, ws_name);
+
+		        /* Write workbook and Download */
+		        if (typeof console !== 'undefined') console.log(new Date());
+		        XLSX.writeFile(wb, filename);
+		        if (typeof console !== 'undefined') console.log(new Date());
+		     } ,
+		    error: function(e){
+		    	alert("Error.!");
+		    }
+		});	
+	}
+	function getRecords(page,itemsPerRecord){
+		$.ajax({
+	        type : 'GET',
+	        url : cabaseurl+'/filteredConsultants?iDisplayStart='+page+'&iDisplayLength=10&sSearch='+document.getElementById("allSearch").value+'&status='+document.getElementById("statusCol").value,
+	        contentType:"application/json; charset=utf-8",	        
+	        success : function(response)
+	        {	        
+	        	tableData = response;
+	        	document.getElementById("total").value = response.recordsTotal;	 
+	        	if(page=="-1" || page==-1){
+	        		navicate(-1,"",10,10);
+	        	}	        	
+	        	$("#tbodyid").empty();	        	
+		       $.each(response.list, function(i,dish){ 		    	   
+		    	   var clientname = '<a style="text-decoration: underline;color: #7571f9;" href="./new-consultant.html?consultantId='+dish.id+'" alt="Edit">'+dish.name+'</a>';
+		       	   if(dish.status=="2"){
+		       			clientname = dish.name;
+		       	   }	
+		    	   var markup = "<tr><td><input type='checkbox' class='checkBoxClass' onchange='enableActionButtons()' style='outline: 2px solid #0D62C3;' name='consultantIds' value='"+dish.id+"'></td><td>"+clientname+"</td><td>" + dish.companyname + "</td><td>" 
+		    	   + dish.address+"</td><td>" + dish.phoneNo + "</td><td>" + dish.phoneNo1+"</td></tr>";
+		            $("table tbody").append(markup);
+		       		 			             
+		        });
+		       if(response.list.length==0){
+		    	   var markup = "<tr><td colspan='6' align='center'> No records Found. </td></tr>";
+		    	   $("table tbody").append(markup);
+		       }
+	        },
+	        error : function()
+	        {	     
+                // $('#').fadeOut();      
+	            alert('Error. . .');
+	        }
+	    });
+	}
+	$(document).ready(function(){		
+		$.ajax({
+	        type : 'GET',
+	        url : cabaseurl+'/filteredConsultants?iDisplayStart=0&iDisplayLength=10&sSearch=&status=1',
+	        contentType:"application/json; charset=utf-8",	        
+	        success : function(response)
+	        {	        
+	        	tableData = response;
+	        	document.getElementById("total").value = response.recordsTotal;
+	        	navicate(-1,"",10,10);
+	        	
+		       $.each(response.list, function(i,dish){ 		    	   
+		    	   var clientname = '<a style="text-decoration: underline;color: #7571f9;" href="./new-consultant.html?consultantId='+dish.id+'" alt="Edit">'+dish.name+'</a>';
+		       		
+		    	   var markup = "<tr><td><input type='checkbox' class='checkBoxClass' onchange='enableActionButtons()' style='outline: 2px solid #0D62C3;' name='consultantIds' value='"+dish.id+"'></td><td>"+clientname+"</td><td>" + dish.companyname + "</td><td>" 
+		    	   + dish.address+"</td><td>" + dish.phoneNo + "</td><td>" + dish.phoneNo1+"</td></tr>";
+		            $("table tbody").append(markup);
+		       		 			             
+		        });
+	        },
+	        error : function()
+	        {	     
+                // $('#').fadeOut();      
+	            alert('Error. . .');
+	        }
+	    });		
+	});
+</script>	
+</head>
+
+<body>
+
+        <!--**********************************
+            Content body start
+        ***********************************-->
+        <div class="">
+
+            <div style="padding:10px;">
+                
+            </div>
+            <!-- row -->
+
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-12">
+                    	
+                        <div class="card">
+                        
+                            <div class="card-body">
+                                <div class="row">
+									<div class="col-2">
+										<span>Time Sheet</span> 
+									</div>
+									<div class="col-3">
+										<button type="button" class="btn mb-1 btn-rounded btn-sm" style="padding-left: 10px;margin-right: 4%" onclick="download()"><span style="border: 2px solid darkgray;"  class="btn-icon-left"><i class="fa fa-download color-warning"></i> </span>Download</button>                                
+										<button type="button" class="btn mb-1 btn-rounded btn-sm" style="padding-left: 10px;margin-right: 3%"><span style="border: 2px solid darkgray;"  class="btn-icon-left"><i class="fa fa-upload color-success"></i> </span>Upload</button> 
+									</div>									
+									<div class="col-1">
+
+									</div>
+									<div id="actionButtons" class="col-6" style="display:none;">
+										<button type="button" class="btn mb-1 btn-rounded btn-sm" onclick="changeStatus('Activate')" style="background: lawngreen;padding-left: 10px; margin-right: 1%"><span style="border: 2px solid darkgray;"  class="btn-icon-left"><i class="fa fa-check"></i> </span>Activate</button>
+										<button type="button" class="btn mb-1 btn-rounded btn-sm" onclick="changeStatus('DeActivate')" style="padding-left: 10px; margin-right: 1%"><span style="border: 2px solid darkgray;"  class="btn-icon-left"><i class="fa fa-envelope color-danger"></i> </span>DeActivate</button>
+										<button type="button" class="btn mb-1 btn-rounded btn-sm" onclick="deleteConsulants()" style="background: orangered;padding-left: 10px; margin-right: 1%"><span style="border: 2px solid darkgray;"  class="btn-icon-left"><i class="fa fa-close"></i> </span>Delete</button>
+										<button type="button" class="btn mb-1 btn-rounded btn-sm" onclick="setMailIds()" data-toggle="modal" data-target="#emailModal" style="background: antiquewhite;padding-left: 10px; margin-right: 1%"><span style="border: 2px solid darkgray;"  class="btn-icon-left"><i class="fa fa-envelope color-danger"></i> </span>Email</button>
+										<button type="button" class="btn mb-1 btn-rounded btn-sm" onclick="setMobileNos()" data-toggle="modal" data-target="#smsModal" style="background: bisque;padding-left: 10px; margin-right: 1%"><span style="border: 2px solid darkgray;"  class="btn-icon-left"><i class="fa fa-envelope color-danger"></i> </span>Sms</button>
+									</div>
+								</div>
+								<div>
+									
+								</div>
+                                <!-- <div class="table-responsive"> -->
+	                                
+                                	 <div class="row" style="padding: 5px">
+                                         <input type="hidden" id="total" value="16"/>
+		                                <select class="form-control" style="width: 200px; margin: 10px; height: 40px;" id="statusCol" name="statusCol" onchange="getRecords('-1',10)">
+		                                    <option value="1" selected="selected">Active Clients Only</option>
+											<option value="2" >DeActivated Clients Only</option>
+		                                </select>	                                		                              
+	                                	<input class="form-control" style="width: 240px; margin: 10px; height: 40px;" type="text" class="" onkeyup="getRecords('-1',10)" id="allSearch" name="allSearch" placeholder="Search in all columns...">
+                                        <div class="col-2">
+										</div>
+                                        <div class="pull-right form-control"  id="pg" style="margin-top: 9px;width: 504px;padding-top: 12px;height: 41px;"></div>
+                                        <div style="padding-left: 10px; padding-right: 10px; width: 100%;">
+                                            <table class="table table-striped table-bordered zero-configuration" id="customerTable">
+                                                <thead>
+                                                    <tr style="color: white; background-color: darkblue;">
+                                                    	<th><input type="checkbox" id ="ckbCheckAll" style="outline: 2px solid white;" id="selectAll" name="selectAll" /></th>
+                                                        <th>Name</th>
+                                                        <th>Company Name</th>
+                                                        <th>Address</th>
+                                                        <th>Phone No1</th>
+                                                        <th>Phone No2</th>                                                        
+                                                    </tr>
+                                                </thead>
+                                                <tbody id="tbodyid">
+
+                                                </tbody>
+                                                <tfoot>
+                                                    <tr style="color: white; background-color: darkblue;">
+                                                    	<th>&nbsp;</th>
+                                                        <th>Name</th>
+                                                        <th>Company Name</th>
+                                                        <th>Addresss</th>
+                                                        <th>Phone No1</th>
+                                                        <th>Phone No2</th>
+                                                    </tr>
+                                                </tfoot>
+                                            </table>
+                                        </div>
+                                        <div class="bootstrap-modal">
+                                    <!-- Button trigger modal -->
+                                   
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="emailModal">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title">Compose Email</h5>
+                                                    <button type="button" class="close" data-dismiss="modal"><span>&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <div class="compose-content mt-7">				                                       
+				                                            <div class="form-group">
+				                                                <input type="text" class="form-control bg-transparent" id="toAddress" placeholder=" To">
+				                                            </div>
+				                                            <div class="form-group">
+				                                                <input type="text" class="form-control bg-transparent" id="mailSub" placeholder=" Subject">
+				                                            </div>
+				                                            <div class="form-group">
+				                                                <textarea class="textarea_editor form-control bg-light" id="mailContent" rows="5" placeholder="Enter text ..."></textarea>
+				                                            </div>				                                        
+				                                    </div>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" id="closeBtn" data-dismiss="modal">Close</button>
+                                                    <button type="button" class="btn btn-primary" onclick="sendMailContent()">Send</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Modal -->
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="smsModal">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title">Send SMS</h5>
+                                                    <button type="button" class="close" data-dismiss="modal"><span>&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <div class="compose-content mt-7">				                                       
+				                                            <div class="form-group">
+				                                                <input type="text" class="form-control bg-transparent" id="toNos" placeholder=" To">
+				                                            </div>				                                           
+				                                            <div class="form-group">
+				                                                <textarea class="textarea_editor form-control bg-light" id="smsContent" rows="5" placeholder="Enter text ..."></textarea>
+				                                            </div>				                                        
+				                                    </div>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" id="closeBtnSMS" data-dismiss="modal">Close</button>
+                                                    <button type="button" class="btn btn-primary" onclick="sendSMSContent()">Send</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Modal -->
+                                </div>
+                            
+                                    </div>
+                                </div>
+                            
+                        <!-- </div> -->
+                    </div>
+                </div>
+                                         
+                </div>
+            </div>
+            <!-- #/ container -->
+        </div>
+        <!--**********************************
+            Content body end
+        ***********************************-->
+        
+
+    
+
+</body>
+
+</html>

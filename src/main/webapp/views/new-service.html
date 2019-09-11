@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Quixlab - Bootstrap Admin Dashboard Template by Themefisher.com</title>
+    <!-- Favicon icon -->
+    <link rel="icon" type="image/png" sizes="16x16" href="../images/favicon.png">
+    <!-- Custom Stylesheet -->
+     <!-- Favicon icon -->
+    <link rel="icon" type="image/png" sizes="16x16" href="../images/favicon.png">
+    <!-- Custom Stylesheet -->
+    <link href="../plugins/bootstrap-material-datetimepicker/css/bootstrap-material-datetimepicker.css" rel="stylesheet">
+    <!-- Page plugins css -->
+    <link href="../plugins/clockpicker/dist/jquery-clockpicker.min.css" rel="stylesheet">
+    <!-- Color picker plugins css -->
+    <link href="../plugins/jquery-asColorPicker-master/css/asColorPicker.css" rel="stylesheet">
+    <!-- Date picker plugins css -->
+    <link href="../plugins/bootstrap-datepicker/bootstrap-datepicker.min.css" rel="stylesheet">
+    <!-- Daterange picker plugins css -->
+    <link href="../plugins/timepicker/bootstrap-timepicker.min.css" rel="stylesheet">
+    <link href="../plugins/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
+
+    <link href="../css/style.css" rel="stylesheet">
+	<style>
+	
+@media (min-width: 1199px) {
+  [data-layout="horizontal"] .nav-header {
+    width: 9.0625rem; }
+    [data-layout="horizontal"] .nav-header .nav-control {
+      display: none; }
+  [data-layout="horizontal"] .header {
+    width: calc(100% - 0.0625rem);
+    margin-left: 0.0625rem;
+    z-index: 9; }
+    [data-layout="horizontal"] .header .header-left {
+      margin-left: 0; }
+  [data-layout="horizontal"] .nk-sidebar {
+    width: 100%;
+    position: relative;
+    height: auto;
+    padding-bottom: 0;
+    top: 0;
+    z-index: 8; }
+    [data-layout="horizontal"] .nk-sidebar .slimScrollDiv {
+      overflow: visible !important; }
+      [data-layout="horizontal"] .nk-sidebar .slimScrollDiv .nk-nav-scroll {
+        overflow: visible !important; }
+    [data-layout="horizontal"] .nk-sidebar .nav-user,
+    [data-layout="horizontal"] .nk-sidebar .nav-label {
+      display: none; }
+    [data-layout="horizontal"] .nk-sidebar .metismenu {
+      -webkit-box-orient: horizontal;
+      -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+      flex-direction: row; }
+      [data-layout="horizontal"] .nk-sidebar .metismenu .collapse.in {
+        display: none; }
+      [data-layout="horizontal"] .nk-sidebar .metismenu .has-arrow:after {
+        transform: rotate(135deg) translateY(-50%); }
+      [data-layout="horizontal"] .nk-sidebar .metismenu li {
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+        flex-direction: column;
+        position: relative; }
+        [data-layout="horizontal"] .nk-sidebar .metismenu li > ul {
+          position: absolute;
+          top: 2.9375rem;
+          width: 100%;
+          min-width: 13.75rem;
+          z-index: 999;
+          left: auto;
+          right: auto;
+          padding: 1rem 0; }
+          [data-layout="horizontal"] .nk-sidebar .metismenu li > ul li {
+            padding: 0 1.25rem; }
+            [data-layout="horizontal"] .nk-sidebar .metismenu li > ul li a {
+              transition: all .4s ease-in-out;
+              padding: 0.625rem 0.9375rem 0.625rem 0.9375rem;
+              margin-left: -.1rem; }
+              [data-layout="horizontal"] .nk-sidebar .metismenu li > ul li a:hover {
+                border-radius: .4rem; }
+          [data-layout="horizontal"] .nk-sidebar .metismenu li > ul ul a {
+            padding: 0.625rem 0.9375rem 0.625rem 1.875rem;
+            margin-left: -.1rem; }
+      [data-layout="horizontal"] .nk-sidebar .metismenu > li {
+        flex: 0 0 auto;
+        position: relative; }
+        [data-layout="horizontal"] .nk-sidebar .metismenu > li.mega-menu:not(:last-child) {
+          position: static; }
+        [data-layout="horizontal"] .nk-sidebar .metismenu > li.mega-menu ul {
+          left: 0;
+          right: 0;
+          padding: 1.25rem 2.8125rem; }
+          [data-layout="horizontal"] .nk-sidebar .metismenu > li.mega-menu ul li {
+            border-right: 1px solid #EEEEEE;
+            padding: 0 1.25rem; }
+            [data-theme-version="dark"][data-layout="horizontal"] .nk-sidebar .metismenu > li.mega-menu ul li {
+              border-color: rgba(120, 130, 140, 0.13); }
+            [data-sibebarbg="color_2"][data-layout="horizontal"] .nk-sidebar .metismenu > li.mega-menu ul li {
+              border-color: #05080b; }
+            [data-sibebarbg="color_3"][data-layout="horizontal"] .nk-sidebar .metismenu > li.mega-menu ul li {
+              border-color: #2e0c43; }
+            [data-sibebarbg="color_4"][data-layout="horizontal"] .nk-sidebar .metismenu > li.mega-menu ul li {
+              border-color: #22134e; }
+            [data-sibebarbg="color_5"][data-layout="horizontal"] .nk-sidebar .metismenu > li.mega-menu ul li {
+              border-color: #711717; }
+            [data-sibebarbg="color_6"][data-layout="horizontal"] .nk-sidebar .metismenu > li.mega-menu ul li {
+              border-color: #121843; }
+            [data-sibebarbg="color_7"][data-layout="horizontal"] .nk-sidebar .metismenu > li.mega-menu ul li {
+              border-color: #0b3564; }
+            [data-sibebarbg="color_8"][data-layout="horizontal"] .nk-sidebar .metismenu > li.mega-menu ul li {
+              border-color: #013758; }
+            [data-sibebarbg="color_9"][data-layout="horizontal"] .nk-sidebar .metismenu > li.mega-menu ul li {
+              border-color: #002629; }
+            [data-sibebarbg="color_10"][data-layout="horizontal"] .nk-sidebar .metismenu > li.mega-menu ul li {
+              border-color: #263f15; }
+            [data-layout="horizontal"] .nk-sidebar .metismenu > li.mega-menu ul li a {
+              transition: all .4s ease-in-out; }
+              [data-layout="horizontal"] .nk-sidebar .metismenu > li.mega-menu ul li a:hover {
+                border-radius: 0.25rem; }
+        [data-layout="horizontal"] .nk-sidebar .metismenu > li.mega-menu:hover > ul {
+          display: flex;
+          flex-wrap: wrap;
+          flex-direction: column;
+          max-height: 13.75rem;
+          width: 70vw;
+          z-index: 99; }
+          [data-layout="horizontal"] .nk-sidebar .metismenu > li.mega-menu:hover > ul::after {
+            content: "";
+            height: 100%;
+            width: 1px;
+            position: absolute;
+            background-color: #fff;
+            right: 2.8125rem;
+            top: 0; }
+            [data-theme-version="dark"][data-layout="horizontal"] .nk-sidebar .metismenu > li.mega-menu:hover > ul::after {
+              background-color: #1b2b42; }
+            [data-sibebarbg="color_2"][data-layout="horizontal"] .nk-sidebar .metismenu > li.mega-menu:hover > ul::after {
+              background-color: #16202d; }
+            [data-sibebarbg="color_3"][data-layout="horizontal"] .nk-sidebar .metismenu > li.mega-menu:hover > ul::after {
+              background-color: #4c136f; }
+            [data-sibebarbg="color_4"][data-layout="horizontal"] .nk-sidebar .metismenu > li.mega-menu:hover > ul::after {
+              background-color: #331d77; }
+            [data-sibebarbg="color_5"][data-layout="horizontal"] .nk-sidebar .metismenu > li.mega-menu:hover > ul::after {
+              background-color: #9c1f1f; }
+            [data-sibebarbg="color_6"][data-layout="horizontal"] .nk-sidebar .metismenu > li.mega-menu:hover > ul::after {
+              background-color: #1d276b; }
+            [data-sibebarbg="color_7"][data-layout="horizontal"] .nk-sidebar .metismenu > li.mega-menu:hover > ul::after {
+              background-color: #104d92; }
+            [data-sibebarbg="color_8"][data-layout="horizontal"] .nk-sidebar .metismenu > li.mega-menu:hover > ul::after {
+              background-color: #01578b; }
+            [data-sibebarbg="color_9"][data-layout="horizontal"] .nk-sidebar .metismenu > li.mega-menu:hover > ul::after {
+              background-color: #00545c; }
+            [data-sibebarbg="color_10"][data-layout="horizontal"] .nk-sidebar .metismenu > li.mega-menu:hover > ul::after {
+              background-color: #3e6522; }
+          [data-layout="horizontal"] .nk-sidebar .metismenu > li.mega-menu:hover > ul ul a {
+            width: 101%; }
+        [data-layout="horizontal"] .nk-sidebar .metismenu > li.mega-menu-xl:hover > ul {
+          display: flex;
+          flex-wrap: wrap;
+          flex-direction: column;
+          max-height: 25rem;
+          width: 70vw; }
+          [data-layout="horizontal"] .nk-sidebar .metismenu > li.mega-menu-xl:hover > ul ul a {
+            width: 101%; }
+        [data-layout="horizontal"] .nk-sidebar .metismenu > li.mega-menu-lg:hover > ul {
+          display: flex;
+          flex-wrap: wrap;
+          flex-direction: column;
+          max-height: 25rem;
+          width: 60vw;
+          height: 25rem !important; } }
+	</style>
+
+</head>
+
+<body>
+
+   
+
+        <!--**********************************
+            Content body start
+        ***********************************-->
+        <div class="">
+
+            <div style="padding:10px;">
+                
+            </div>
+            <!-- row -->
+
+            <div class="container-fluid">
+                <div class="row justify-content-center">
+                    <div class="col-lg-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="form-validation">
+                                    <form class="form-valide" action="#" method="post">
+                                        <div class="row text-center" style="    color: #1F3D71;
+                                                  font: 16px Arial,Helvetica,sans-serif;font-weight: bold; padding: 0 5px;">
+                                          <label class="col-lg-12 col-form-label" for="val-username">New Service Page</label>
+                                        </div>
+										                    <div class="form-group row">
+                                            <label class="col-lg-2 col-form-label" style="font-weight:bold;font-size:16px" for="val-username">Personal Details  
+                                            </label>
+                                            <div class="col-lg-4">
+                                                
+                                            </div>
+											<label class="col-lg-2 col-form-label" for="val-username">
+                                            </label>
+                                            <div class="col-lg-4">
+                                                
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="col-lg-2 col-form-label" for="val-username">Customer Name <span class="text-danger">*</span>
+                                            </label>
+                                            <div class="col-lg-4">
+                                                <input type="text" class="form-control" id="val-username" name="val-username" placeholder="Enter a username..">
+                                            </div>
+											<label class="col-lg-2 col-form-label" for="val-username">Father Name <span class="text-danger">*</span>
+                                            </label>
+                                            <div class="col-lg-4">
+                                                <input type="text" class="form-control" id="val-username" name="val-username" placeholder="Enter a username..">
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+											<label class="col-lg-2 col-form-label" for="val-confirm-password">Date of Birth  
+                                            </label>
+                                            <div class="col-lg-4">
+                                                <input type="text" class="form-control" placeholder="2017-06-04" id="mdate">
+                                            </div>
+											<label class="col-lg-2 col-form-label" for="val-email">Mobile Number <span class="text-danger">*</span>
+                                            </label>
+                                            <div class="col-lg-4">
+                                                <input type="text" class="form-control" id="val-username" name="val-username" placeholder="Your valid mobile..">
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">											
+                                            <label class="col-lg-2 col-form-label" for="val-email">Email <span class="text-danger">*</span>
+                                            </label>
+                                            <div class="col-lg-4">
+                                                <input type="text" class="form-control" id="val-email" name="val-email" placeholder="Your valid email..">
+                                            </div>
+                                             <label class="col-lg-2 col-form-label" for="val-suggestions">Address <span class="text-danger">*</span>
+                                            </label>
+                                            <div class="col-lg-4">
+                                                <textarea class="form-control" id="val-suggestions" name="val-suggestions" rows="3" placeholder="What would you like to see?"></textarea>
+                                            </div>											
+                                        </div>
+										<div class="form-group row">
+                                            <label class="col-lg-2 col-form-label" style="font-weight:bold;font-size:16px" for="val-username">Company Details  
+                                            </label>
+                                            <div class="col-lg-4">
+                                                
+                                            </div>
+											<label class="col-lg-2 col-form-label" for="val-username">
+                                            </label>
+                                            <div class="col-lg-4">
+                                                
+                                            </div>
+                                        </div>
+										<div class="form-group row">
+                                            <label class="col-lg-2 col-form-label" for="val-username">Company Name <span class="text-danger">*</span>
+                                            </label>
+                                            <div class="col-lg-4">
+                                                <input type="text" class="form-control" id="val-username" name="val-username" placeholder="Enter a username..">
+                                            </div>
+											<label class="col-lg-2 col-form-label" for="val-username">Website Name <span class="text-danger">*</span>
+                                            </label>
+                                            <div class="col-lg-4">
+                                                <input type="text" class="form-control" id="val-username" name="val-username" placeholder="Enter a username..">
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="col-lg-2 col-form-label" for="val-email">Landline Number <span class="text-danger">*</span>
+                                            </label>
+                                            <div class="col-lg-4">
+                                                <input type="text" class="form-control" id="val-email" name="val-email" placeholder="Your valid email..">
+                                            </div>
+											<label class="col-lg-2 col-form-label" for="val-email">Mobile Number <span class="text-danger">*</span>
+                                            </label>
+                                            <div class="col-lg-4">
+                                                <input type="text" class="form-control" id="val-username" name="val-username" placeholder="Your valid mobile..">
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+										<label class="col-lg-2 col-form-label" for="val-confirm-password">Reference  
+                                            </label>
+                                            <div class="col-lg-4">
+                                                <input type="text" class="form-control" id="val-confirm-password" name="val-confirm-password" placeholder="Landline Number">
+                                            </div>
+                                             <label class="col-lg-2 col-form-label" for="val-suggestions">Address <span class="text-danger">*</span>
+                                            </label>
+                                            <div class="col-lg-4">
+                                                <textarea class="form-control" id="val-suggestions" name="val-suggestions" rows="3" placeholder="What would you like to see?"></textarea>
+                                            </div>											
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="col-lg-2 col-form-label" for="val-confirm-password">PAN Number <span class="text-danger">*</span>
+                                            </label>
+                                            <div class="col-lg-4">
+                                                <input type="text" class="form-control" id="val-name" name="val-name" placeholder="PAN Number">
+                                            </div>
+											<label class="col-lg-2 col-form-label" for="val-confirm-password">PAN Number <span class="text-danger">*</span>
+                                            </label>
+                                            <div class="col-lg-4">
+                                                <input type="text" class="form-control" id="val-name" name="val-name" placeholder="GST Number">
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="col-lg-4 col-form-label" for="val-suggestions">Suggestions <span class="text-danger">*</span>
+                                            </label>
+                                            <div class="col-lg-6">
+                                                <textarea class="form-control" id="val-suggestions" name="val-suggestions" rows="5" placeholder="What would you like to see?"></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="col-lg-4 col-form-label" for="val-skill">Best Skill <span class="text-danger">*</span>
+                                            </label>
+                                            <div class="col-lg-6">
+                                                <select class="form-control" id="val-skill" name="val-skill">
+                                                    <option value="">Please select</option>
+                                                    <option value="html">HTML</option>
+                                                    <option value="css">CSS</option>
+                                                    <option value="javascript">JavaScript</option>
+                                                    <option value="angular">Angular</option>
+                                                    <option value="angular">React</option>
+                                                    <option value="vuejs">Vue.js</option>
+                                                    <option value="ruby">Ruby</option>
+                                                    <option value="php">PHP</option>
+                                                    <option value="asp">ASP.NET</option>
+                                                    <option value="python">Python</option>
+                                                    <option value="mysql">MySQL</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="col-lg-4 col-form-label" for="val-currency">Currency <span class="text-danger">*</span>
+                                            </label>
+                                            <div class="col-lg-6">
+                                                <input type="text" class="form-control" id="val-currency" name="val-currency" placeholder="$21.60">
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="col-lg-4 col-form-label" for="val-website">Website <span class="text-danger">*</span>
+                                            </label>
+                                            <div class="col-lg-6">
+                                                <input type="text" class="form-control" id="val-website" name="val-website" placeholder="http://example.com">
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="col-lg-4 col-form-label" for="val-phoneus">Phone (US) <span class="text-danger">*</span>
+                                            </label>
+                                            <div class="col-lg-6">
+                                                <input type="text" class="form-control" id="val-phoneus" name="val-phoneus" placeholder="212-999-0000">
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="col-lg-4 col-form-label" for="val-digits">Digits <span class="text-danger">*</span>
+                                            </label>
+                                            <div class="col-lg-6">
+                                                <input type="text" class="form-control" id="val-digits" name="val-digits" placeholder="5">
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="col-lg-4 col-form-label" for="val-number">Number <span class="text-danger">*</span>
+                                            </label>
+                                            <div class="col-lg-6">
+                                                <input type="text" class="form-control" id="val-number" name="val-number" placeholder="5.0">
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="col-lg-4 col-form-label" for="val-range">Range [1, 5] <span class="text-danger">*</span>
+                                            </label>
+                                            <div class="col-lg-6">
+                                                <input type="text" class="form-control" id="val-range" name="val-range" placeholder="4">
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="col-lg-4 col-form-label"><a href="#">Terms &amp; Conditions</a>  <span class="text-danger">*</span>
+                                            </label>
+                                            <div class="col-lg-8">
+                                                <label class="css-control css-control-primary css-checkbox" for="val-terms">
+                                                    <input type="checkbox" class="css-control-input" id="val-terms" name="val-terms" value="1"> <span class="css-control-indicator"></span> I agree to the terms</label>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <div class="col-lg-8 ml-auto">
+                                                <button type="submit" class="btn btn-primary">Submit</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- #/ container -->
+        </div>
+        <!--**********************************
+            Content body end
+        ***********************************-->
+        
+        
+    <!--**********************************
+        Scripts
+    ***********************************-->
+    <script src="../plugins/common/common.min.js"></script>
+    <script src="../js/custom.min.js"></script>
+    <script src="../js/settings.js"></script>
+    <script src="../js/gleek.js"></script>
+    <script src="../js/styleSwitcher.js"></script>
+
+    <script src="../plugins/validation/jquery.validate.min.js"></script>
+    <script src="../plugins/validation/jquery.validate-init.js"></script>
+	
+	<!--**********************************
+        Scripts
+    ***********************************-->
+    <script src="../plugins/common/common.min.js"></script>
+    <script src="../js/custom.min.js"></script>
+    <script src="../js/settings.js"></script>
+    <script src="../js/gleek.js"></script>
+    <script src="../js/styleSwitcher.js"></script>
+
+    <script src="../plugins/moment/moment.js"></script>
+    <script src="../plugins/bootstrap-material-datetimepicker/js/bootstrap-material-datetimepicker.js"></script>
+    <!-- Clock Plugin JavaScript -->
+    <script src="../plugins/clockpicker/dist/jquery-clockpicker.min.js"></script>
+    <!-- Color Picker Plugin JavaScript -->
+    <script src="../plugins/jquery-asColorPicker-master/libs/jquery-asColor.js"></script>
+    <script src="../plugins/jquery-asColorPicker-master/libs/jquery-asGradient.js"></script>
+    <script src="../plugins/jquery-asColorPicker-master/dist/jquery-asColorPicker.min.js"></script>
+    <!-- Date Picker Plugin JavaScript -->
+    <script src="../plugins/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
+    <!-- Date range Plugin JavaScript -->
+    <script src="../plugins/timepicker/bootstrap-timepicker.min.js"></script>
+    <script src="../plugins/bootstrap-daterangepicker/daterangepicker.js"></script>
+
+    <script src="../js/plugins-init/form-pickers-init.js"></script>
+
+</body>
+
+</html>

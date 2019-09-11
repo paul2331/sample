@@ -11,7 +11,10 @@ public interface CustomerDao {
 
 	public Customer addCustomer(Customer customer);
 
-	public void updateCustomer(Customer customer) ;
+	public void saveCustomer(Customer customer) ;
 
 	public void deleteCustomer(int id) ;
+	
+	public Long getCustomerCount(String status, String searchStr,int customerType);
+	public List<Customer> listCustomers(int start, int maxRecords,String status, String searchStr,int customerType);
 }
